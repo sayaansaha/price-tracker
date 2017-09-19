@@ -6,4 +6,5 @@ class PriceFetcher(object):
   def __init__(self, arg):
     super(PriceFetcher, self).__init__()
     self.arg = arg
-    
+  
+  def   
