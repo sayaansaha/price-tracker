@@ -5,9 +5,10 @@ import json
 
 class RestApi(object):
   """docstring for RestApi"""
-  def __init__(self, url, api_endpoint):
+  def __init__(self, url, api_endpoint, api_key):
     self.url = url
     self.api_endpoint = api_endpoint
+    self.api_key = api_key 
 
   def send_get(self, action, first_param=None, **kwargs):
     """
