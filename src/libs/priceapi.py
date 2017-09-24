@@ -3,14 +3,14 @@ import httplib2
 import json
 import datetime
 from restapi import RestApi
-
+from congig import Config
 class PriceFetcher(RestApi):
   """Class for fetching prices from goog api"""
   def __init__(self, arg):
     super(PriceFetcher, self).__init__(
       url='https://www.googleapis.com/qpxExpress/v1/',
       api_endpoint = 'trips',
-      api_key='AIzaSyCcPSWB7n1aj2hx4TCM_aJDBW2QHhLqQSA')
+      api_key=Config.api_key)
     self.arg = arg
   
   def get_price_cuncun(self, start_date, return_date):
