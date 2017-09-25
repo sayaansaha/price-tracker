@@ -15,15 +15,17 @@ class PriceFetcher(RestApi):
   
   def get_price_cuncun(self, start_date, return_date):
     """Should return a price probably"""
-    data = #json type data like in 
+    data = self._create_json_query('SFO', 'CUN', start_date, return_date)
     #https://developers.google.com/qpx-express/v1/requests 
     response = self.send_post('search', first_param=None, data=data)
+    return response
 
   def get_price_cabo(self, start_date, return_date):
     """Get price for trip to SFO-->CABO"""
-    data = #json type data like in 
+    data = self._create_json_query('SFO', 'SJD', start_date, return_date)
     #https://developers.google.com/qpx-express/v1/requests 
     response = self.send_post('search', first_param=None, data=data)
+    return response
 
   def _create_json_query(self, origin, destination, start_date, return_date):
     """Returns a json object with specificed request"""
