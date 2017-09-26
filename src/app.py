@@ -18,6 +18,9 @@ def hello():
 @app.route('/<name>')
 def hello_name(name):
   return "Hello {}!".format(name)
+@app.route('/readme')
+def readme_page(name):
+	return 'Go readme'
 
 
 if __name__ == '__main__':
