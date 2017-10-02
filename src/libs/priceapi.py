@@ -3,15 +3,13 @@ import httplib2
 import json
 import datetime
 from restapi import RestApi
-from congig import Config
 class PriceFetcher(RestApi):
   """Class for fetching prices from goog api"""
-  def __init__(self, arg):
+  def __init__(self):
     super(PriceFetcher, self).__init__(
       url='https://www.googleapis.com/qpxExpress/v1/',
       api_endpoint = 'trips',
-      api_key=Config.api_key)
-    self.arg = arg
+      api_key='config.api_key')
   
   def get_price_cuncun(self, start_date, return_date):
     """Should return a price probably"""
@@ -28,7 +26,8 @@ class PriceFetcher(RestApi):
     return response
 
   def _create_json_query(self, origin, destination, start_date, return_date):
-    """Returns a json object with specificed request"""
+    """Returns a json object with specificed request
+    Dates are in YYYY-MM-DD"""
     data = {"request":{"passengers":{"adultcount":1},
     "slice":[
     {"origin":str(origin),

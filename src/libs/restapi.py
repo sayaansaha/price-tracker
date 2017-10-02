@@ -10,7 +10,7 @@ class RestApi(object):
     self.api_endpoint = api_endpoint
     self.api_key = api_key 
 
-  def send_get(self, action, first_param=None, **kwargs):
+  def send_get(self, action, first_param=None):
     """
     Issues a GET request (read) against the API and returns the result.
 
@@ -23,7 +23,7 @@ class RestApi(object):
     :type kwargs: dict
     :return type: dict
     """
-    uri = self.format_url(action, first_param, **kwargs)
+    uri = self.format_url(action, first_param)
     return self._send_request(method='GET', uri=uri)
 
   def send_post(self, action, first_param=None, data=None):
@@ -39,8 +39,8 @@ class RestApi(object):
     :type kwargs: dict
     :return type: dict
     """
-    uri = self.format_url(action, first_param, **kwargs)
-    return self._send_request(method='POST', uri, data=None)
+    uri = self.format_url(action, first_param)
+    return self._send_request(method='POST', uri=uri, data=None)
 
   def _send_request(self, method, uri, data=None):
     """
@@ -72,7 +72,7 @@ class RestApi(object):
       result = {}
     return result
   
-  def format_url(self, action, first_param=None, **kwargs):
+  def format_url(self, action, first_param=None):
     """
     Formats the string we append to our URL for API calls.
     Necessary, because some API calls treat the first parameter as an end point in the url rather
@@ -88,8 +88,8 @@ class RestApi(object):
     :rtype: str
     """
     uri = action + '/'
-    if endpoint is not None:
-      uri = uri + endpoint
+    if self.api_endpoint is not None:
+      uri = uri + self.api_endpoint
     return uri
     
 
