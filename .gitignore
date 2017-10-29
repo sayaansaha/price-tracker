@@ -1,3 +1,4 @@
 Procfile
 *.pyc
 src/config.py
+.idea
