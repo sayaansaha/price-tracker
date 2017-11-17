@@ -4,4 +4,6 @@ prices = PriceFetcher()
 
 def main():
 	data = prices.get_price_cancun()
-	print data 
+	print data
+
+main()

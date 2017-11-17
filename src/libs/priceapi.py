@@ -18,6 +18,9 @@ class PriceFetcher(RestApi):
     uri = self.url + self.api_endpoint
     uri = uri + '/' + str(self.action)
     return uri
+  
+  def date_handler():
+    """Should handle dates and convert to what is req'd by api."""
 
   def get_price_cuncun(self, start_date, return_date):
     """Should return a price probably"""
