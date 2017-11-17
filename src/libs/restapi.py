@@ -2,7 +2,8 @@ import urllib2
 import base64
 import os
 import json
-from ..config import Config
+from config import Config
+
 class RestApi(object):
   """docstring for RestApi"""
   def __init__(self, url, api_endpoint):
@@ -24,6 +25,7 @@ class RestApi(object):
     :return type: dict
     """
     uri = self.format_url(action, first_param)
+    print(uri)
     return self._send_request(method='GET', uri=uri)
 
   def send_post(self, action, first_param=None, data=None):
@@ -40,6 +42,7 @@ class RestApi(object):
     :return type: dict
     """
     uri = self.format_url(action, first_param)
+    print(uri)
     return self._send_request(method='POST', uri=uri, data=None)
 
   def _send_request(self, method, uri, data=None):
@@ -71,25 +74,11 @@ class RestApi(object):
     else:
       result = {}
     return result
-  
+
   def format_url(self, action, first_param=None):
-    """
-    Formats the string we append to our URL for API calls.
-    Necessary, because some API calls treat the first parameter as an end point in the url rather
-    than a url parameter.
-
-    :param action: String representing the API action we want to do.
-    :param end_point: The end point variable (if there is one).
-    :param kwargs: Additional url parameters that we want to attach to our API call.
-
-    :type action: str
-    :type end_point: str
-    :type kwargs: dict
-    :rtype: str
-    """
-    uri = action + '/'
-    if self.api_endpoint is not None:
-      uri = uri + self.api_endpoint
+    """Formats the uri properly"""
+    uri = self.url + self.api_endpoint
+    uri = uri + '/' + action
     return uri
     
 
