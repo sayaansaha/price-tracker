@@ -10,8 +10,7 @@ class PriceFetcher(RestApi):
   def __init__(self):
     super(PriceFetcher, self).__init__(
       url='https://www.googleapis.com/qpxExpress/v1/',
-      api_endpoint = 'trips',
-      api_key=Config.api_key)
+      api_endpoint = 'trips')
 
   def format_url(self, action, first_param=None):
     """Formats the uri properly"""
@@ -19,8 +18,12 @@ class PriceFetcher(RestApi):
     uri = uri + '/' + str(self.action)
     return uri
   
-  def date_handler():
-    """Should handle dates and convert to what is req'd by api."""
+  def date_handler(date_string):
+    """
+    Should handle dates and convert to what is req'd by api.
+    @param: date string
+    @returns: YYYY-MM-DD
+    """    
 
   def get_price_cuncun(self, start_date, return_date):
     """Should return a price probably"""

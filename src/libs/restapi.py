@@ -2,13 +2,13 @@ import urllib2
 import base64
 import os
 import json
-
+from ..config import Config
 class RestApi(object):
   """docstring for RestApi"""
-  def __init__(self, url, api_endpoint, api_key):
+  def __init__(self, url, api_endpoint):
     self.url = url
     self.api_endpoint = api_endpoint
-    self.api_key = api_key 
+    self.api_key = Config.api_key 
 
   def send_get(self, action, first_param=None):
     """
