@@ -43,7 +43,7 @@ class RestApi(object):
     """
     uri = self.format_url(action, first_param)
     print(uri)
-    return self._send_request(method='POST', uri=uri, data=None)
+    return self._send_request(method='POST', uri=uri, data=data)
 
   def _send_request(self, method, uri, data=None):
     """
@@ -59,18 +59,22 @@ class RestApi(object):
     :type data: dict
     :return type: dict
     """
-    url = self.api_endpoint + uri
+    url = uri + self.api_endpoint
     request = urllib2.Request(url)
     if method == 'POST':
+      print(data)
       request.add_data(json.dumps(data))
     request.add_header('Content-Type', 'application/json')
     request.add_header('User-Agent', 'price-tracker')
+    #TODO(Sayaan): Add Auth to header
     try:
       response = urllib2.urlopen(request).read()
     except urllib2.HTTPError as e:
       response = e.read()
     if response:
-      result = json.loads(response)
+      print(response)
+      return response
+      #result = json.loads(response)
     else:
       result = {}
     return result
