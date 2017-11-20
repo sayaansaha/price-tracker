@@ -1,5 +1,5 @@
 Procfile
 *.pyc
-src/config.py
+src/libs/config.py
 .idea
 .idea/*

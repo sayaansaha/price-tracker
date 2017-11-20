@@ -83,6 +83,7 @@ class RestApi(object):
     """Formats the uri properly"""
     uri = self.url + self.api_endpoint
     uri = uri + '/' + action
+    uri = uri + '?key=%s' % self.api_key
     return uri
     
 
